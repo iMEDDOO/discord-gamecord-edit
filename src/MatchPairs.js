@@ -20,7 +20,7 @@ module.exports = class MatchPairs extends events {
     if (!options.timeoutTime) options.timeoutTime = 60000;
     if (!options.emojis) options.emojis = ['🍉', '🍇', '🍊', '🍋', '🥭', '🍎', '🍏', '🥝', '🥥', '🍓', '🍒', '🫐', '🍍', '🍅', '🍐', '🥔', '🌽', '🥕', '🥬', '🥦'];
     if (!options.winMessage) options.winMessage = '**You won the Game! You turned a total of `{tilesTurned}` tiles.**';
-    if (!options.loseMessage) options.loseMessage = '**You lost the Game! You turned a total of `{tilesTurned}` tiles.**'; 
+    if (!options.loseMessage) options.loseMessage = '**You lost the Game! You turned a total of `{tilesTurned}` tiles.**';
     
 
     if (typeof options.embed !== 'object') throw new TypeError('INVALID_EMBED: embed option must be an object.');
@@ -124,7 +124,7 @@ module.exports = class MatchPairs extends events {
 
 
   async handleButtons(msg) {
-    const collector = msg.createMessageComponentCollector({ idle: this.options.time });
+    const collector = msg.createMessageComponentCollector({ idle: this.options.timeoutTime });
 
     collector.on('collect', async btn => {
       await btn.deferUpdate().catch(e => {});
